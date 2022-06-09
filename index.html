@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hi</title>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://aframe.io/releases/1.2.0/aframe.js"></script>
+    <script src="scripts/main.js" defer></script>
+    <script src="https://unpkg.com/aframe-vartiste-toolkit@1.31.0/vartiste-toolkit.js"></script>
+  </head>
+
+  <body>
+    <a-assets>
+        <img id="space" src="images/stars.jpg" crossorigin="anonymous" />
+    </a-assets>
+
+    <a-scene 
+        icon-button="shader: matcap" 
+        renderer="colorManagement: true" 
+        xr-controllers-only="addUseControllerButton: true" 
+        spectator-camera="camera: #spectator-camera; state: SPECTATOR_CAMERA">
+    
+        <a-sky color="#333" material = "src: #space"></a-sky>
+        <!--vartiste-user-root sets up the default laser pointer / mouse & keyboard interactions. If you want to define your own user setup, you'll want to make sure to include the manipulator components on both of the hand components to ensure that things can be grabbed and resized.-->
+        <a-entity vartiste-user-root=""></a-entity>
+        <a-entity position="0 0 -2.5">
+
+        <!--undo changes-->
+        <a-entity icon-button="#asset-undo" tooltip="Undo" position="3.1 2 -2.4" onclick="VARTISTE.Undo.undo()"></a-entity>
+
+        <!--You can use some of the VARTISTE drawing tools, too!-->
+        <a-entity id="draw-canvas-demo" class="clickable" drawable="canvas:#draw-canvas-asset" frame="" geometry="primitive: sphere; radius: 1" material="shader: flat; src: #draw-canvas-asset; npot: true" position="3.1 0 -2.4" tooltip="Draw Here" tooltip-style="offset: 0 0.75 0"></a-entity>
+        <a-entity class="clickable" color-picker="" geometry="primitive: circle; radius: 1; height: 1.75" position="3.5 4 -2.4"></a-entity>
+        <a-entity class="clickable" color-picker="" geometry="primitive: circle; radius: 1; height: 1.75" position="3.5 4 -2.4"></a-entity>
+
+        <!-- There's a few handy default constraints to restrict how things can be grabbed -->
+        <a-sphere class="clickable" constrain-to-sphere="outerRadius: 0.5" manipulator-weight="type: slow; weight: 0.9" grab-options="undoable: true" material="shader: standard; roughness: 0.3; metalness: 0.7" position="0 0.4 -0.4" radius="0.1"></a-sphere>
+    </a-scene>
+    </body>
+</html>

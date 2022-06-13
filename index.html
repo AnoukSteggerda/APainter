@@ -21,6 +21,7 @@
         <img id="saturn" src="images/saturn.jpg" crossorigin="anonymous" />
         <img id="uranus" src="images/uranus.jpg" crossorigin="anonymous" />
         <img id="neptune" src="images/neptune.jpg" crossorigin="anonymous" />
+        
     </a-assets>
 
     <a-asset id="hdr" src="https://unpkg.com/aframe-vartiste-toolkit@latest/asset/studio.hdr"></a-asset>
@@ -29,12 +30,17 @@
       <a-mixin id="lever-grip" material="color: #a2c4fa"></a-mixin>
     </a-assets>
 
-
     <a-scene 
         icon-button="shader: matcap" 
         renderer="colorManagement: true" 
         xr-controllers-only="addUseControllerButton: true" 
         spectator-camera="camera: #spectator-camera; state: SPECTATOR_CAMERA">
+
+        <!-- <a-camera id="myCamera">
+          <a-cursor interaction-spawn="Event: click; mixin: voxel"></a-cursor>
+        </a-camera> -->
+
+        <!-- <a-entity link="href: index.html; title: My Homepage; image: #homeThumbnail"></a-entity> -->
 
         <!-- <a-entity position="0 0 0" camera look-controls wasd-controls="acceleration: 50">
           <a-camera id="spectator-camera">
@@ -145,6 +151,7 @@
       </a-sphere>
       
       <a-sphere 
+        id="venusPlanet"
         position="-5 1.25 -5" 
         radius=".4" 
         material = "src: #venus;"
@@ -262,4 +269,12 @@
       </a-sphere>
     </a-scene>
     </body>
+
+    <!-- <script>
+      document
+      .querySelector("#venusPlanet")
+      .addEventListener("mouseenter", e => {
+        location.href = "venusIndex.html";
+      });
+    </script> -->
 </html>
